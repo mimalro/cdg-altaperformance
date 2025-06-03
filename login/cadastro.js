@@ -1,6 +1,7 @@
 let usuarios = []
 
 const form = document.getElementById('formCadastro')
+const BASE_URL = window.location.origin + '/cdg-altaperformance/';
 
 window.addEventListener('DOMContentLoaded', () => {
     const senhaInput = document.getElementById('senha');
@@ -119,7 +120,7 @@ function cadastrar(){
     } else {
         usuarios.push(usuario)
         localStorage.setItem('usuarios', JSON.stringify(usuarios))
-        window.location.href = 'login.html'
+        window.location.href = BASE_URL + 'login/login.html'
     }
 }
 

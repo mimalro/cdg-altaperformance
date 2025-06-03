@@ -1,3 +1,6 @@
+const BASE_URL = window.location.origin + '/cdg-altaperformance/';
+
+
 document.addEventListener('DOMContentLoaded', function() {
     const formLogin = document.getElementById('formLogin');
 
@@ -30,7 +33,7 @@ function logar(){
     if (usuario) {
         sessionStorage.setItem('usuarioLogado', JSON.stringify(usuario));
         console.log("bem vindo, " + usuario.nome)
-        window.location.href = window.location.origin + '/dashboard/dashboard.html';
+        window.location.href = BASE_URL + 'dashboard/dashboard.html';
     } else {
         console.log("Pode entar nao")
         console.log(usuario)

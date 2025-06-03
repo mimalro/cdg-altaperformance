@@ -1,10 +1,11 @@
+const BASE_URL = window.location.origin + '/cdg-altaperformance/';
 
 document.addEventListener('DOMContentLoaded', function(){
     const usuario = JSON.parse(sessionStorage.getItem('usuarioLogado'));
 
     if (!usuario){
         alert('Voce precisa estar logado para acessar essa página');
-        window.location.href = '../login/login.html'
+        window.location.href = BASE_URL + 'login/login.html'
         return;
     }
     listarUsuarios();
@@ -37,7 +38,7 @@ function listarUsuarios(filtro = ''){
 
 function logout() {
     sessionStorage.removeItem('usuarioLogado');
-    window.location.href = window.location.origin + '/login/login.html';
+    window.location.href = BASE_URL + 'login/login.html';
 }
 
 function filtrarUsuarios(){
@@ -62,9 +63,9 @@ function editarUsuario(index){
     sessionStorage.setItem('usuarioEditar', JSON.stringify({ usuario, index }));
 
   // Redireciona para a tela de edição
-    window.location.href = 'login/edicao.html';
+    window.location.href = BASE_URL + 'login/edicao.html';
 }
 
 function verPerfil(){
-    window.location.href = 'perfil.html'
+    window.location.href = BASE_URL + 'dashboard/perfil.html'
 }
