@@ -2,7 +2,7 @@ document.addEventListener('DOMContentLoaded', () => {
   const dados = JSON.parse(sessionStorage.getItem('usuarioEditar'));
   if (!dados) {
     //alert('Nenhum usuário selecionado para edição.');
-    window.location.href = '../dashboard/dashboard.html';
+    window.location.href = 'dashboard/dashboard.html';
     return;
   }
 
@@ -30,6 +30,6 @@ document.addEventListener('DOMContentLoaded', () => {
     localStorage.setItem('usuarios', JSON.stringify(usuarios));
     alert('Usuário atualizado com sucesso!');
     sessionStorage.removeItem('usuarioEditar');
-    window.location.href = '../dashboard/dashboard.html';
+    window.location.href = 'dashboard/dashboard.html';
   });
 });

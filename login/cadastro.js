@@ -2,6 +2,39 @@ let usuarios = []
 
 const form = document.getElementById('formCadastro')
 
+window.addEventListener('DOMContentLoaded', () => {
+    const senhaInput = document.getElementById('senha');
+    const senhaConfirmaInput = document.getElementById('senhaConfirma');
+
+    if (senhaInput && senhaConfirmaInput) {
+        const mensagemSenha = document.createElement('span');
+        mensagemSenha.id = 'mensagemSenha';
+        senhaConfirmaInput.parentNode.insertBefore(mensagemSenha, senhaConfirmaInput.nextSibling);
+
+        function verificaSenhaEmTempoReal() {
+            const senha = senhaInput.value;
+            const confirmar = senhaConfirmaInput.value;
+
+            if (confirmar === '') {
+                mensagemSenha.textContent = '';
+                mensagemSenha.style.color = '';
+                return;
+            }
+
+            if (senha === confirmar) {
+                mensagemSenha.textContent = '✔️ Senhas coincidem';
+                mensagemSenha.style.color = 'green';
+            } else {
+                mensagemSenha.textContent = '❌ Senhas não coincidem';
+                mensagemSenha.style.color = 'red';
+            }
+        }
+
+        senhaInput.addEventListener('input', verificaSenhaEmTempoReal);
+        senhaConfirmaInput.addEventListener('input', verificaSenhaEmTempoReal);
+    }
+});
+
 form.addEventListener('submit', function(event){
     event.preventDefault();
 
@@ -11,7 +44,7 @@ form.addEventListener('submit', function(event){
     if(senhaOK && emailOK){
         cadastrar()
     } else {
-        console.log("validacao falhou")
+        alert("Erro ao cadastrar, verifique as informações e tente novamente.")
     }
 })
 
@@ -56,6 +89,7 @@ function confereSenha(){
     }
 }
 
+
 if(localStorage.getItem('usuarios')){
     usuarios = JSON.parse(localStorage.getItem('usuarios'))
 }
@@ -85,7 +119,7 @@ function cadastrar(){
     } else {
         usuarios.push(usuario)
         localStorage.setItem('usuarios', JSON.stringify(usuarios))
-        location.href = '../login/login.html'
+        window.location.href = 'login.html'
     }
 }
 

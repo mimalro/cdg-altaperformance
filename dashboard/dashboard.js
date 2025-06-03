@@ -37,7 +37,7 @@ function listarUsuarios(filtro = ''){
 
 function logout() {
     sessionStorage.removeItem('usuarioLogado');
-    window.location.href="../login/login.html"
+    window.location.href="login/login.html"
 }
 
 function filtrarUsuarios(){
@@ -62,7 +62,7 @@ function editarUsuario(index){
     sessionStorage.setItem('usuarioEditar', JSON.stringify({ usuario, index }));
 
   // Redireciona para a tela de edição
-    window.location.href = '../login/edicao.html';
+    window.location.href = 'login/edicao.html';
 }
 
 function verPerfil(){
