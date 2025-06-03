@@ -30,7 +30,7 @@ function logar(){
     if (usuario) {
         sessionStorage.setItem('usuarioLogado', JSON.stringify(usuario));
         console.log("bem vindo, " + usuario.nome)
-        window.location.href = '/dashboard/dashboard.html'
+        window.location.href = window.location.origin + '/dashboard/dashboard.html';
     } else {
         console.log("Pode entar nao")
         console.log(usuario)

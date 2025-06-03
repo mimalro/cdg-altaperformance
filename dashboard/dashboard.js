@@ -37,7 +37,7 @@ function listarUsuarios(filtro = ''){
 
 function logout() {
     sessionStorage.removeItem('usuarioLogado');
-    window.location.href="login/login.html"
+    window.location.href = window.location.origin + '/login/login.html';
 }
 
 function filtrarUsuarios(){
