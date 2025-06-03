@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="dashboard.js"></script>
+    <link rel="stylesheet" type="text/css" href="styles.css">
+</head>
+<body>
+    <div class="botoes">
+        <button onclick="verPerfil()">Ver Perfil</button>
+        <button onclick="filtrarUsuarios()">Pesquisar</button>
+        <input type="text" id="busca" placeholder="Buscar por nome">
+        <button onclick="logout()">Sair</button>
+    </div>
+
+
+    <table border="1">
+        <thead>
+            <tr>
+                <th>Nome</th>
+                <th>Email</th>
+                <th>Acoes</th>
+            </tr>
+        </thead>
+        <tbody id="tabelaUsuarios"></tbody>
+    </table>
+</body>
+
+
+</html>

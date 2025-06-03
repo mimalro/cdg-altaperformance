@@ -1,0 +1,113 @@
+body {
+  font-family: Arial, sans-serif;
+  background: linear-gradient(to right, #74ebd5, #acb6e5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  margin: 0;
+}
+
+
+.login{
+    background-color: white;
+    border-radius: 12px;
+    padding: 30px;
+    width: 300px;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+    flex-direction: column;
+    display: flex;
+    gap: 15px;
+}
+
+.login h2 {
+  text-align: center;
+  color: #333;
+  margin-bottom: 10px;
+}
+
+.login label {
+  font-weight: bold;
+  color: #555;
+}
+
+
+.login input[type="email"],
+.login input[type="password"] {
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  font-size: 14px;
+}
+
+.login-btn{
+  padding: 10px;
+  border: none;
+  border-radius: 8px;
+  font-size: 15px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.login-btn[type="submit"]{
+  background-color: #4CAF50;
+  color: white;
+}
+
+#registro{
+  background-color: #2196F3;
+  color: white;
+}
+
+.login-btn button:hover{
+  filter:brightness(1.1)
+}
+
+/* Caixa de cadastro */
+.cadastro {
+  background-color: white;
+  padding: 30px;
+  border-radius: 12px;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+  width: 300px;
+}
+
+.campos {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+/* Campos de entrada */
+.campos input {
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  font-size: 14px;
+}
+
+/* Estilo base dos botões */
+.campos button {
+  padding: 10px;
+  border: none;
+  border-radius: 8px;
+  font-size: 15px;
+  cursor: pointer;
+  color: white;
+  transition: background-color 0.3s ease;
+}
+
+/* Botão de salvar */
+.campos button:first-of-type {
+  background-color: #4CAF50;
+}
+
+/* Botão de login */
+.campos button:last-of-type {
+  background-color: #2196F3;
+}
+
+/* Hover para ambos */
+.campos button:hover {
+  filter: brightness(1.1);
+}
