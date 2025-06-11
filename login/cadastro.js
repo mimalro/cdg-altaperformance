@@ -39,13 +39,38 @@ window.addEventListener('DOMContentLoaded', () => {
 form.addEventListener('submit', function(event){
     event.preventDefault();
 
+    const camposObrigatorios = [
+        { id: 'username', mensagem: 'Nome de usuário é obrigatório.' },
+        { id: 'email', mensagem: 'E-mail é obrigatório.' },
+        { id: 'cpf', mensagem: 'CPF é obrigatório.' },
+        { id: 'nascimento', mensagem: 'Data de nascimento é obrigatória.' },
+        { id: 'senha', mensagem: 'Senha é obrigatória.' },
+        { id: 'senhaConfirma', mensagem: 'Confirmação de senha é obrigatória.' }
+    ];
+
+    let camposValidos = true;
+
+    camposObrigatorios.forEach(campo =>{
+        const input = document.getElementById(campo.id);
+        const valido = validarCampo(input, input.value.trim() !== '', campo.mensagem);
+        if (!valido) camposValidos = false;
+    })
+
+    const inputUsername = document.getElementById('username');
+    const inputCPF = document.getElementById('cpf');
+
+    const userOK = validarCampo(inputUsername, nomeValido(inputUsername.value), "Usuário deve conter de 3 a 11 caracteres.");
+    const cpfOK = validarCampo(inputCPF, cpfValido(inputCPF.value), "CPF deve conter exatamente 11 dígitos numéricos.");
+
+
+
     const senhaOK = confereSenha();
     const emailOK = confereEmail();
 
-    if(senhaOK && emailOK){
-        cadastrar()
-    } else {
-        alert("Erro ao cadastrar, verifique as informações e tente novamente.")
+    if (camposValidos && senhaOK && emailOK && cpfOK && userOK){
+        cadastrar();
+    }else {
+        alert("Erro ao cadastrar. Informações invalidas")
     }
 })
 
@@ -55,45 +80,80 @@ function emailValido(email){
  
 }
 
+function cpfValido(cpf){
+    const regex = /^\d{11}$/;
+    return regex.test(cpf)
+}
+
+function nomeValido(username){
+    const regex = /^[a-zA-Z]{3,11}$/
+    return regex.test(username)
+}
+
 function confereEmail() {
     const emailInput = document.getElementById('email')
     const email = emailInput.value
 
-    if (emailValido(email)){
-        console.log("email valido")
-        return true;
-    } else{
-        console.log("email invalido")
-        return false;
-    }
+    return validarCampo(emailInput,emailValido(email), "E-Mail inválido")
 }
 
 
-function confereSenha(){
+function confereSenha() {
+    const senha = document.getElementById('senha');
+    const confirmaSenha = document.getElementById('senhaConfirma');
 
-    const senha = document.querySelector('input[id=senha]')
-    const confirmaSenha = document.querySelector("input[id=senhaConfirma]")
+    const senhaValida = senha.value.length >= 8 &&
+                        /[a-z]/.test(senha.value) &&
+                        /[A-Z]/.test(senha.value) &&
+                        /[0-9]/.test(senha.value);
 
-    console.log(senha.value)
+    const senhasIguais = senha.value === confirmaSenha.value;
 
-    if (senha.value.length >= 8 && senha.value.match(/[a-z]/) && senha.value.match(/[A-Z]/) && senha.value.match(/[0-9]/)){
-        if(confirmaSenha.value === senha.value){
-            console.log("as senhas conferem")
-            return true;
-        } else{
-            console.log("as senhas devem ser iguais")
-            return false;
-        }
-    } else{
-        console.log("Senha precisa de maiuscula, minuscula e numeros")
-        return false;
-    }
+    const senhaOK = validarCampo(
+        senha,
+        senhaValida,
+        "Senha deve ter ao menos 8 caracteres, com maiúscula, minúscula e número."
+    );
+
+    const confirmaOK = validarCampo(
+        confirmaSenha,
+        senhasIguais,
+        "As senhas não coincidem."
+    );
+
+    return senhaOK && confirmaOK;
 }
 
 
 if(localStorage.getItem('usuarios')){
     usuarios = JSON.parse(localStorage.getItem('usuarios'))
 }
+
+function validarCampo(input, condicaoValida, mensagemErro) {
+    let spanErro = input.nextElementSibling;
+
+    // Se o próximo elemento não é um <span>, cria um
+    if (!spanErro || !spanErro.classList.contains('mensagem-erro')) {
+        spanErro = document.createElement('span');
+        spanErro.classList.add('mensagem-erro');
+        input.parentNode.insertBefore(spanErro, input.nextSibling);
+    }
+
+    if (condicaoValida) {
+        input.classList.remove('erro');
+        input.classList.add('sucesso');
+        spanErro.textContent = '';
+        return true;
+    } else {
+        input.classList.remove('sucesso');
+        input.classList.add('erro');
+        spanErro.textContent = mensagemErro;
+        return false;
+    }
+}
+
+
+
 
 function cadastrar(){
     

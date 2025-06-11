@@ -32,11 +32,9 @@ function logar(){
 
     if (usuario) {
         sessionStorage.setItem('usuarioLogado', JSON.stringify(usuario));
-        console.log("bem vindo, " + usuario.nome)
+        alert("bem vindo, " + usuario.nome)
         window.location.href = BASE_URL + 'dashboard/dashboard.html';
     } else {
-        console.log("Pode entar nao")
-        console.log(usuario)
-        console.log(usuario.username)
+        alert("Ëmail ou senha incorreto, tente novamente")
     }
 }

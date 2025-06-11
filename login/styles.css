@@ -111,3 +111,21 @@ body {
 .campos button:hover {
   filter: brightness(1.1);
 }
+
+input.erro {
+    border: 2px solid red;
+    background-color: #ffe5e5;
+}
+
+input.sucesso {
+    border: 2px solid green;
+    background-color: #e6ffe6;
+}
+
+span.mensagem-erro {
+    color: red;
+    font-size: 0.8em;
+    display: block;
+    margin-top: 4px;
+}
+

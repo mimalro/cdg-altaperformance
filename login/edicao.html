@@ -5,13 +5,89 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Editar Usuário</title>
   <style>
-    body { font-family: Arial; padding: 20px; }
-    label { display: block; margin-top: 10px; }
-    input { width: 300px; padding: 8px; margin-top: 5px; }
-    button { margin-top: 20px; padding: 10px 20px; }
-  </style>
+  /* Fundo e layout geral */
+  body {
+    font-family: Arial, sans-serif;
+    background: linear-gradient(to right, #74ebd5, #acb6e5);
+    margin: 0;
+    padding: 40px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 30px;
+  }
+
+  h2 {
+    color: #333;
+    font-size: 28px;
+    margin-bottom: 10px;
+  }
+
+  /* Estilo do formulário */
+  form#formPerfil {
+    background-color: white;
+    padding: 30px 40px;
+    border-radius: 16px;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15);
+    width: 100%;
+    max-width: 500px;
+  }
+
+  label {
+    display: block;
+    margin-bottom: 15px;
+    font-weight: bold;
+    color: #333;
+  }
+
+  input {
+    width: 100%;
+    padding: 10px 12px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    font-size: 14px;
+    box-sizing: border-box;
+  }
+
+  input[readonly] {
+    background-color: #f3f3f3;
+    color: #555;
+  }
+
+  /* Responsividade básica */
+  @media (max-width: 600px) {
+    body {
+      padding: 20px;
+    }
+
+    form#formPerfil {
+      padding: 20px;
+    }
+  }
+  .botao-voltar {
+  position: absolute;
+  top: 20px;
+  left: 20px;
+  background-color: #f44336;
+  color: white;
+  padding: 10px 16px;
+  border-radius: 8px;
+  text-decoration: none;
+  font-weight: bold;
+  font-size: 14px;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.botao-voltar:hover {
+  background-color: #d32f2f;
+  transform: scale(1.05);
+}
+
+</style>
 </head>
 <body>
+  <a href="dashboard.html" class="botao-voltar">⬅ Voltar</a>
   <h2>Editar Usuário</h2>
   <form id="formEdicao">
     <label>Nome:
